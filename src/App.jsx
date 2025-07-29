@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Plus, MoreVertical, X, Pencil, ChevronRight, Check, Menu} from 'lucide-react';
+import { Search, Plus, MoreVertical, X, Pencil, ChevronRight, Check, Menu, Trash2, ToggleLeft} from 'lucide-react';
 
 const customers = [
   { id: 1, name: 'abhi', location: 'Noida / Uttar Pradesh', verified: true },
@@ -106,7 +106,7 @@ export default function App() {
               </div>
             </div>
 
-            {/* UPDATED LIST STYLING HERE */}
+            
             <ul className="flex-1 overflow-y-auto custom-scrollbar p-2 space-y-2 bg-gray-50/50">
               {customers.map(customer => (
                 <li
@@ -151,11 +151,15 @@ export default function App() {
                       </div>
                     </div>
 
-                    {/* Vertically stacked details */}
                     <div className="text-sm text-gray-500 space-y-1">
-                      <div className="flex items-center">
-                        <p>India</p>
+                      <div className="flex justify-between items-center w-full">
+                      <p>India</p>
+                      <div className="flex space-x-6 cursor-pointer ml-10">
+                        <Trash2 size={18} color="#ed0c0c" />
+                        <ToggleLeft size={25} color="#03bf54" />
                       </div>
+                    </div>
+
                       <p className='text-gray-400'>GSTIN/UIN: <span className="text-gray-400 font-medium">PAN</span> <button className="text-gray-400 hover:text-purple-600"><Pencil size={16} /></button> </p>
                       <p className='text-gray-400'>Mobile Number: <span className="text-gray-400 font-medium">Landline Number</span> <button className="text-gray-400 hover:text-purple-600"><Pencil size={16} /></button> </p>
                       <div className="flex gap-1">
