@@ -103,6 +103,7 @@ export default function App() {
 
         <div className="flex-1 flex md:flex-row overflow-hidden">
 
+          {/* Sidebar */}
           <aside className={`w-full bg-gray-100 px-2 md:w-80 lg:w-96 border-r border-gray-200 flex-col ${isSidebarVisible ? 'flex' : 'hidden'} md:flex`}>
             
             <div className="p-4">
@@ -163,10 +164,11 @@ export default function App() {
                     <div className="text-sm text-gray-500 space-y-1">
                       <div className="flex justify-between items-center w-full">
                         <p>India</p>
-                        <div className="flex space-x-6 cursor-pointer ml-10">
-                          <Trash2 size={18} color="#ed0c0c" />
-                          <ToggleRight size={25} color="#03bf54" />
-                        </div>
+                        <div className="flex items-center space-x-6 cursor-pointer ml-10">
+                        <Trash2 size={18} color="#ed0c0c" />
+                        <ToggleRight size={25} color="#03bf54" />
+                      </div>
+
                       </div>
 
                       <p className='text-gray-400'>GSTIN/UIN: <span className="text-gray-400 font-medium">PAN</span> <button className="text-gray-400 hover:text-purple-600"><Pencil size={16} /></button> </p>
@@ -178,22 +180,27 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="bg-white border-b border-gray-200">
-                    <nav className="-mb-px flex space-x-6 px-4 overflow-x-auto custom-scrollbar" aria-label="Tabs">
-                      {tabs.map((tab) => (
-                        <button
-                          key={tab}
-                          className={`whitespace-nowrap py-3 px-1 font-medium text-sm rounded-t-md ${
-                            tab === 'Settings'
-                              ? 'bg-gray-100 text-gray-700 w-28'
-                              : 'text-gray-500 hover:text-gray-700'
-                          }`}
-                        >
-                          {tab}
-                        </button>
-                      ))}
-                    </nav>
-                  </div>
+                  <div className="bg-white border-[0.5px] border-dotted border-gray-200">
+                  <nav
+                    className="flex justify-start flex-wrap -mb-px px-4 py-1 overflow-x-auto custom-scrollbar"
+                    aria-label="Tabs"
+                  >
+                    {tabs.map((tab) => (
+                      <button
+                        key={tab}
+                        className={`mx-2 whitespace-nowrap py-3 px-4 font-medium text-sm border-dotted border-r-[1px] border-gray-200 ${
+                          tab === 'Settings'
+                            ? 'bg-gray-100 text-gray-700 w-24'
+                            : 'text-gray-500 hover:text-gray-700'
+                        }`}
+                      >
+                        {tab}
+                      </button>
+                    ))}
+                  </nav>
+                </div>
+
+
                 </div>
                 
                 <div className="p-4 sm:p-6 flex-1">
@@ -201,7 +208,7 @@ export default function App() {
 
                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                      {['Backorder', 'Payment Reminder', 'Notification', 'SEZ / EOU', '0.1% Export Tax'].map((label, index) => (
-                       <div key={label} className="relative flex flex-col items-center justify-center p-3 border border-gray-200 rounded-lg bg-white text-center h-full min-h-[70px]">
+                       <div key={label} className="relative flex flex-col items-center justify-center p-3 border border-dotted border-gray-200 rounded-lg bg-white text-center h-full min-h-[70px]">
                          <p className="text-sm font-medium text-gray-700 flex items-center justify-center h-full px-2">
                            {label}
                          </p>
@@ -218,28 +225,34 @@ export default function App() {
                      <div className="flex justify-between items-center p-5 border-b border-gray-200"><p className="text-sm text-gray-400">TCS %</p><p className="text-sm font-semibold text-gray-400">0</p></div>
                      
                      <div className="flex items-center p-5 border-b border-gray-200">
-                       <p className="text-sm text-gray-400 w-2/5">Price List</p>
-                       <div className="flex items-center space-x-2 text-gray-500 w-1/5">
-                           <ChevronRight className="w-4 h-4 text-gray-400" />
-                           <span className="text-gray-400">Catalog</span>
-                       </div>
-                       <div className="flex items-center space-x-2 justify-end w-2/5">
-                           <p className="text-sm font-semibold text-gray-400">80</p>
-                           <ChevronRight className="w-4 h-4 text-gray-400" />
-                       </div>
-                     </div>
+                      <p className="text-sm text-gray-400 w-2/5 min-w-[100px]">Price List</p>
+
+                      <div className="flex items-center space-x-2 text-gray-500 w-1/5 min-w-[120px]">
+                        <ChevronRight className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                        <span className="text-gray-400">Catalog</span>
+                      </div>
+
+                      <div className="flex items-center space-x-2 justify-end w-2/5 min-w-[120px]">
+                        <p className="text-sm font-semibold text-gray-400">80</p>
+                        <ChevronRight className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                      </div>
+                    </div>
+
 
                      <div className="flex items-center p-5">
-                       <p className="text-sm text-gray-400 w-2/5">Groups</p> <span className='text-gray-400 text-base'>3</span>
-                       <div className="flex items-center space-x-2 text-gray-400 w-1/5">
-                           <ChevronRight className="w-4 h-4" />
-                           <span className="text-gray-400">Company Type</span>
-                       </div>
-                       <div className="flex items-center space-x-2 justify-end w-2/5">
-                           <p className="text-sm font-semibold text-gray-400">Debtor</p>
-                           
-                       </div>
-                     </div>
+                      <p className="text-sm text-gray-400 w-2/5">Groups</p>
+                      <span className="text-gray-400 text-base">3</span>
+
+                      <div className="flex items-center space-x-2 text-gray-400 w-1/5 min-w-[120px]">
+                        <ChevronRight className="w-4 h-4 flex-shrink-0" />
+                        <span className="text-gray-400">Company Type</span>
+                      </div>
+
+                      <div className="flex items-center space-x-2 justify-end w-2/5">
+                        <p className="text-sm font-semibold text-gray-400">Debtor</p>
+                      </div>
+                    </div>
+
 
                        </div>
                      </div>
@@ -253,6 +266,8 @@ export default function App() {
           </main>
 
         </div>
+
+        
       </div>
     </>
   );
